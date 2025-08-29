@@ -3,6 +3,9 @@ title: "Blog 1"
 description: "Welcome to my weekly Blogs"
 author: "Marina Bellido"
 date: "8/29/25"
+categories:
+  - reflection
+  - labreport
 draft: false
 ---
 

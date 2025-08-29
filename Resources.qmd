@@ -1,8 +1,10 @@
 ---
-title: "Resources"
+title: "E155 Resources"
 listing:
-  contents: class resources
+  contents: Resources
   sort: "date desc"
   type: default
-  categories: false
 ---
+
+Link to the Course Website: 
+[Course Website](https://hmc-e155.github.io)

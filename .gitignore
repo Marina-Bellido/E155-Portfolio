@@ -1,0 +1,5 @@
+/.quarto/
+/_site/
+
+#Ignore Mac Files 
+.DS_Store

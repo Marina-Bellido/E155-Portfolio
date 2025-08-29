@@ -14,13 +14,6 @@
     "text": "I am a senior engineering major at Harvey Mudd College interested in electrical and computer engineering/digital design. I’m currently doing research as a Clay-Wolkin Fellow at Harvey Mudd’s VLSI lab developing a comprehensive open-source functional verification suite for RISC-V processors. I have experience with SystemVerilog and RISC-V assembly and would love to continue to grow my computer engineering skills. I’m always excited to learn new things and would be happy to connect with you!"
   },
   {
-    "objectID": "Resources/Resources.html",
-    "href": "Resources/Resources.html",
-    "title": "Resources",
-    "section": "",
-    "text": "Link to the Course Website: Course Website"
-  },
-  {
     "objectID": "posts/first-post.html",
     "href": "posts/first-post.html",
     "title": "Blog 1",
@@ -86,8 +79,8 @@
   {
     "objectID": "Resources.html",
     "href": "Resources.html",
-    "title": "Resources",
+    "title": "E155 Resources",
     "section": "",
-    "text": "No matching items"
+    "text": "Link to the Course Website: Course Website\n\n\n\n\n\n\n\n\nNo matching items"
   }
 ]

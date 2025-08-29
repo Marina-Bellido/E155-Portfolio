@@ -1,0 +1,93 @@
+[
+  {
+    "objectID": "blog.html",
+    "href": "blog.html",
+    "title": "E155 Blog",
+    "section": "",
+    "text": "Blog 1\n\n\nWelcome to my weekly Blogs\n\n\n\n\n\nAug 29, 2025\n\n\nMarina Bellido\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "E155 Portfolio",
+    "section": "",
+    "text": "I am a senior engineering major at Harvey Mudd College interested in electrical and computer engineering/digital design. I’m currently doing research as a Clay-Wolkin Fellow at Harvey Mudd’s VLSI lab developing a comprehensive open-source functional verification suite for RISC-V processors. I have experience with SystemVerilog and RISC-V assembly and would love to continue to grow my computer engineering skills. I’m always excited to learn new things and would be happy to connect with you!"
+  },
+  {
+    "objectID": "Resources/Resources.html",
+    "href": "Resources/Resources.html",
+    "title": "Resources",
+    "section": "",
+    "text": "Link to the Course Website: Course Website"
+  },
+  {
+    "objectID": "posts/first-post.html",
+    "href": "posts/first-post.html",
+    "title": "Blog 1",
+    "section": "",
+    "text": "Hi readers, I’m super excited to be taking E155. I’m taking this class because I want to learn more about embedded system design and microcontrollers. I am also looking forward to spending all of my time this semester in the digital design lab alongside all of my incredible classmates."
+  },
+  {
+    "objectID": "Labs.html",
+    "href": "Labs.html",
+    "title": "E155 Labs",
+    "section": "",
+    "text": "Lab Report 1"
+  },
+  {
+    "objectID": "Labs.html#lab-1-fpga-and-mcu-setup-and-testing",
+    "href": "Labs.html#lab-1-fpga-and-mcu-setup-and-testing",
+    "title": "E155 Labs",
+    "section": "",
+    "text": "Lab Report 1"
+  },
+  {
+    "objectID": "Labs.html#lab-2-multiplexed-7-segment-display",
+    "href": "Labs.html#lab-2-multiplexed-7-segment-display",
+    "title": "E155 Labs",
+    "section": "Lab 2: Multiplexed 7-Segment Display",
+    "text": "Lab 2: Multiplexed 7-Segment Display\nLab Report 2"
+  },
+  {
+    "objectID": "Labs.html#lab-3-keypad-scanner",
+    "href": "Labs.html#lab-3-keypad-scanner",
+    "title": "E155 Labs",
+    "section": "Lab 3: Keypad Scanner",
+    "text": "Lab 3: Keypad Scanner\nLab Report 3"
+  },
+  {
+    "objectID": "Labs.html#lab-4-digital-audio",
+    "href": "Labs.html#lab-4-digital-audio",
+    "title": "E155 Labs",
+    "section": "Lab 4: Digital Audio",
+    "text": "Lab 4: Digital Audio\nLab Report 4"
+  },
+  {
+    "objectID": "Labs.html#lab-5-interrupts",
+    "href": "Labs.html#lab-5-interrupts",
+    "title": "E155 Labs",
+    "section": "Lab 5: Interrupts",
+    "text": "Lab 5: Interrupts\nLab Report 5"
+  },
+  {
+    "objectID": "Labs.html#lab-6-the-internet-of-things-and-serial-peripheral-interface",
+    "href": "Labs.html#lab-6-the-internet-of-things-and-serial-peripheral-interface",
+    "title": "E155 Labs",
+    "section": "Lab 6: The Internet of Things and Serial Peripheral Interface",
+    "text": "Lab 6: The Internet of Things and Serial Peripheral Interface\nLab Report 6"
+  },
+  {
+    "objectID": "Labs.html#lab-7-the-advanced-encryption-standard",
+    "href": "Labs.html#lab-7-the-advanced-encryption-standard",
+    "title": "E155 Labs",
+    "section": "Lab 7: The Advanced Encryption Standard",
+    "text": "Lab 7: The Advanced Encryption Standard\nLab Report 7"
+  },
+  {
+    "objectID": "Resources.html",
+    "href": "Resources.html",
+    "title": "Resources",
+    "section": "",
+    "text": "No matching items"
+  }
+]

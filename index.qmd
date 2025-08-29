@@ -1,0 +1,17 @@
+---
+title: "E155 Portfolio"
+image: images/headshot.png
+about: 
+    template: jolla
+    links: 
+        - icon: linkedin
+          text: LinkedIn
+          href: https://www.linkedin.com/in/marina-bellido-hmc/
+        - icon: github
+          text: Github
+          href: https://github.com/Marina-Bellido?tab=repositories
+---
+
+I am a senior engineering major at Harvey Mudd College interested in electrical and computer engineering/digital design. I'm currently doing research as a Clay-Wolkin Fellow at Harvey Mudd's VLSI lab developing a comprehensive open-source functional verification suite for RISC-V processors. I have experience with SystemVerilog and RISC-V assembly and would love to continue to grow my computer engineering skills. I'm always excited to learn new things and would be happy to connect with you!
+
+[](images/headshot.png)

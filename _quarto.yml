@@ -12,7 +12,7 @@ website:
       - href: Resources.qmd
         text: Resources
       - href: blog.qmd
-        text: Posts
+        text: Blogs
 
 
 format:

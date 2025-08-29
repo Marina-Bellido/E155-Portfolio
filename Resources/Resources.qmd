@@ -1,13 +1,9 @@
 ---
-title: "Hello Quarto"
-description: "Welcome to my Quarto portfolio"
-author: "Marina Bellido"
-date: "8/29/25"
-categories:
-  - reflection
-  - labreport
-draft: false
+title: "Resources"
+description: "Class Resources used to complete my labs"
 ---
 
 
-I'm excited to take E155
+Link to the Course Website: 
+[Course Website](https://hmc-e155.github.io)
+

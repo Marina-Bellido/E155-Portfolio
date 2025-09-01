@@ -37,9 +37,9 @@ I build my design using two SystemVerilog modules, one for the 7-segment display
 
 Bellow is the design of the block diagram designed: 
 
-PICTURE!!!!! TODO
+![](images/blockdiagram.png)
 
-The top module can be found here and the 7-segnent display module is here!!!!! TODO
+The FPGA-specific top module can be found [here](https://github.com/Marina-Bellido/E155-labs-code/blob/main/lab1/fpga/src/lab1_mb.sv), and the 7-segment display module is [here](https://github.com/Marina-Bellido/E155-labs-code/blob/main/lab1/fpga/src/sevseg.sv).
 
 ### Testing
 
@@ -47,17 +47,17 @@ I ran into issues when running QuestaSim due to not being able to add the librar
 
 Once I had Questa working, I created two testbenches to verify that my Verilog was working correctly for both modules. These testbenches load a series of testvectors that simulate all of the possible combinations of switches and checks that LEDs 0 and 1 along with the 7-segment display have the appropriate outputs.
 
-The resulting waveform is pictured below for the top module that included both the LEDs and the 7-segment display:
+The resulting waveforms can be found below:
 
-PICTURE!!! TODO 
+![Resulting waveform is pictured below for the top module that included both the LEDs and the 7-segment display](images/lab1waveform.png)
 
-The resulting waveform is pictured below for the 7-segment display module can be seen below:
-
-PICTURE!!!! TODO
+![Resulting waveform is pictured below for the 7-segment display module](images/sevsegwaveform.png)
 
 When run, the testbenches finished with the following message, indicating a successful run.
 
 16 tests completed with 0 errors.
+
+All testbenches and testvector files can be found [here](https://github.com/Marina-Bellido/E155-labs-code/tree/main/lab1/fpga/src). 
 
 
 ## Hardware
@@ -75,7 +75,7 @@ After soldering all of the components to my board, I was having weird issues wit
 
 The assembled board can be seen here:
 
-PICTURE #TODO
+![](images/board.png)
 
 ## 7-Segment Display circuit
 
@@ -84,16 +84,22 @@ The 7-segment display is a common-anode type, meaning one pin is tied to 3.3 V w
 ### Resistor Calculation
 
 To determine the appropriate resistor value, I used the forward voltage and current ratings from the 7-segment display datasheet
+
 FINISH TODO!!!
 
+### Counter Frequency Value 
+
+TODO!!!!
 
 ## Schematic
 
 The circuit schematic consists of the FPGA, DIP switches, LEDs, and a 7-segment display.
 
-PICTURE !!! TODO
+![](images/schematic.png)
 
 
 ## Results
 
 The E155 development board is fully assembled and operational. The FPGA, programmed with synthesized Verilog, drives the LEDs and 7-segment display as specified, with functionality verified in both simulation and hardware testing. The 7-segment display presents all digits clearly with uniform brightness, and overall the design meets every requirement for the lab.
+
+![Uniform Brightness for the 7-segment Display](images/brightnesss.jpeg)

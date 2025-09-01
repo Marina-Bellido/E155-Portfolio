@@ -21,6 +21,55 @@
     "text": "Hi readers, I’m super excited to be taking E155. I’m taking this class because I want to learn more about embedded system design and microcontrollers. I am also looking forward to spending all of my time this semester in the digital design lab alongside all of my incredible classmates."
   },
   {
+    "objectID": "Labs/Lab1/Lab1.html",
+    "href": "Labs/Lab1/Lab1.html",
+    "title": "Lab 1: FPGA and MCU Setup and Testing",
+    "section": "",
+    "text": "In Lab 1, the overall goal was to ensure our E155 Development Boards were working correctly solder all components on the board and then programming the FPGA and MCU. Both boards (FPGA and MCU) were initially programmed with example code to ensure the software flow was working. Subsequently, our task was to implement a custom design to drive a 7-segment display and several LEDs, with inputs provided through DIP switches."
+  },
+  {
+    "objectID": "Labs/Lab1/Lab1.html#introduction",
+    "href": "Labs/Lab1/Lab1.html#introduction",
+    "title": "Lab 1: FPGA and MCU Setup and Testing",
+    "section": "",
+    "text": "In Lab 1, the overall goal was to ensure our E155 Development Boards were working correctly solder all components on the board and then programming the FPGA and MCU. Both boards (FPGA and MCU) were initially programmed with example code to ensure the software flow was working. Subsequently, our task was to implement a custom design to drive a 7-segment display and several LEDs, with inputs provided through DIP switches."
+  },
+  {
+    "objectID": "Labs/Lab1/Lab1.html#fpga-design",
+    "href": "Labs/Lab1/Lab1.html#fpga-design",
+    "title": "Lab 1: FPGA and MCU Setup and Testing",
+    "section": "FPGA Design",
+    "text": "FPGA Design\n\nSteps\nAs shown in the Specifications, 4 DIP switch controller has to be design to control 3 LEDs and a 7-segment display. Having the following inputs and outputs:\n\n\n\nOUTPUT\nINPUT\nOPERATION\n\n\n\n\nLED 0\nS[0:1]\nXOR\n\n\nLED 1\nS[2:3]\nAND\n\n\nLED 2\n48 MHz clock\n2.4 Hz blink\n\n\n7-Segment Display\nS[0:3]\nbinary decoder\n\n\n\n\n\nAproach\nI build my design using two SystemVerilog modules, one for the 7-segment display and the second one a top module that also included the led logic:\n\n\n\n\n\n\n\nSystemVerilog Module\nDescription\n\n\n\n\nlab1_mb\nTop FPGA specific module, includes clock module\n\n\nsevseg\n7-segment display combinational logic\n\n\n\nBellow is the design of the block diagram designed:\n\nThe FPGA-specific top module can be found here, and the 7-segment display module is here.\n\n\nTesting\nI ran into issues when running QuestaSim due to not being able to add the library iCE40 needed for the counter implementation we were using. I solved that by starting questa directly from Lattice Radiant, which did allow me to add the specific library.\nOnce I had Questa working, I created two testbenches to verify that my Verilog was working correctly for both modules. These testbenches load a series of testvectors that simulate all of the possible combinations of switches and checks that LEDs 0 and 1 along with the 7-segment display have the appropriate outputs.\nThe resulting waveforms can be found below:\n\n\n\nResulting waveform is pictured below for the top module that included both the LEDs and the 7-segment display\n\n\n\n\n\nResulting waveform is pictured below for the 7-segment display module\n\n\nWhen run, the testbenches finished with the following message, indicating a successful run.\n16 tests completed with 0 errors.\nAll testbenches and testvector files can be found here."
+  },
+  {
+    "objectID": "Labs/Lab1/Lab1.html#hardware",
+    "href": "Labs/Lab1/Lab1.html#hardware",
+    "title": "Lab 1: FPGA and MCU Setup and Testing",
+    "section": "Hardware",
+    "text": "Hardware\n\nBoard Assembly\nIn lab1, I assembled a custom printed circuit board which hosts the MCU and FPGA boards. The board has several features that are convenient for developing embedded systems such as:\n\nPins which can be directly routed from the MCU to the FPGA via the board\nExtension headers for the mikroBUS and 6-pin PMOD standard\nUser configurable LEDs, pushbuttons, and slider switches.\nHeader to route pins via a ribbon cable to a separate breadboard adapter PCB which can be inserted into a solderless breadboard.\n\nAfter soldering all of the components to my board, I was having weird issues with the LEDS not turning on. After lots of troubleshooting, I eventually traced it down to a bad solder joint in the neighbouring resistors and after reflowing it the board was working correctly.\nThe assembled board can be seen here:"
+  },
+  {
+    "objectID": "Labs/Lab1/Lab1.html#segment-display-circuit",
+    "href": "Labs/Lab1/Lab1.html#segment-display-circuit",
+    "title": "Lab 1: FPGA and MCU Setup and Testing",
+    "section": "7-Segment Display circuit",
+    "text": "7-Segment Display circuit\nThe 7-segment display is a common-anode type, meaning one pin is tied to 3.3 V while the remaining pins connect through current-limiting resistors to the FPGA’s I/O. Driving an I/O pin low turns on the corresponding LED segment.\n\nResistor Calculation\nTo determine the appropriate resistor value, I used the forward voltage and current ratings from the 7-segment display datasheet\nFINISH TODO!!!\n\n\nCounter Frequency Value\nTODO!!!!\n\n\n\nCorrect frequency output for led[2] = 2.4 Hz"
+  },
+  {
+    "objectID": "Labs/Lab1/Lab1.html#schematic",
+    "href": "Labs/Lab1/Lab1.html#schematic",
+    "title": "Lab 1: FPGA and MCU Setup and Testing",
+    "section": "Schematic",
+    "text": "Schematic\nThe circuit schematic consists of the FPGA, DIP switches, LEDs, and a 7-segment display."
+  },
+  {
+    "objectID": "Labs/Lab1/Lab1.html#results",
+    "href": "Labs/Lab1/Lab1.html#results",
+    "title": "Lab 1: FPGA and MCU Setup and Testing",
+    "section": "Results",
+    "text": "Results\nThe E155 development board is fully assembled and operational. The FPGA, programmed with synthesized Verilog, drives the LEDs and 7-segment display as specified, with functionality verified in both simulation and hardware testing. The 7-segment display presents all digits clearly with uniform brightness, and overall the design meets every requirement for the lab.\n\n\n\nUniform Brightness for the 7-segment Display"
+  },
+  {
     "objectID": "Labs.html",
     "href": "Labs.html",
     "title": "E155 Labs",

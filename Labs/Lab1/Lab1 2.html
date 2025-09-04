@@ -138,11 +138,9 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#segment-display-circuit" id="toc-segment-display-circuit" class="nav-link" data-scroll-target="#segment-display-circuit">7-Segment Display circuit</a>
   <ul class="collapse">
   <li><a href="#resistor-calculation" id="toc-resistor-calculation" class="nav-link" data-scroll-target="#resistor-calculation">Resistor Calculation</a></li>
-  <li><a href="#counter-frequency-value" id="toc-counter-frequency-value" class="nav-link" data-scroll-target="#counter-frequency-value">Counter Frequency Value</a></li>
   </ul></li>
   <li><a href="#schematic" id="toc-schematic" class="nav-link" data-scroll-target="#schematic">Schematic</a></li>
   <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
-  <li><a href="#ai-sections" id="toc-ai-sections" class="nav-link" data-scroll-target="#ai-sections">AI Sections</a></li>
   </ul>
 </nav>
     </div>
@@ -252,29 +250,20 @@ ul.task-list li input[type="checkbox"] {
 </tbody>
 </table>
 <p>Bellow is the design of the block diagram designed:</p>
-<p><img src="images/blockdiagram.png" class="img-fluid"></p>
-<p>The FPGA-specific top module can be found <a href="https://github.com/Marina-Bellido/E155-labs-code/blob/main/lab1/fpga/src/lab1_mb.sv">here</a>, and the 7-segment display module is <a href="https://github.com/Marina-Bellido/E155-labs-code/blob/main/lab1/fpga/src/sevseg.sv">here</a>.</p>
+<p>PICTURE!!!!! TODO</p>
+<p>The top module can be found here and the 7-segnent display module is here!!!!! TODO</p>
 </section>
 <section id="testing" class="level3">
 <h3 class="anchored" data-anchor-id="testing">Testing</h3>
 <p>I ran into issues when running QuestaSim due to not being able to add the library iCE40 needed for the counter implementation we were using. I solved that by starting questa directly from Lattice Radiant, which did allow me to add the specific library.</p>
 <p>Once I had Questa working, I created two testbenches to verify that my Verilog was working correctly for both modules. These testbenches load a series of testvectors that simulate all of the possible combinations of switches and checks that LEDs 0 and 1 along with the 7-segment display have the appropriate outputs.</p>
-<p>The resulting waveforms can be found below:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/lab1waveform.png" class="img-fluid figure-img"></p>
-<figcaption>Resulting waveform is pictured below for the top module that included both the LEDs and the 7-segment display</figcaption>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/sevsegwaveform.png" class="img-fluid figure-img"></p>
-<figcaption>Resulting waveform is pictured below for the 7-segment display module</figcaption>
-</figure>
-</div>
+<p>The resulting waveform is pictured below for the top module that included both the LEDs and the 7-segment display:</p>
+<p><a href="Labs/Lab1/images/lab1waveform.png"></a> TODO</p>
+<p>The resulting waveform is pictured below for the 7-segment display module can be seen below:</p>
+<p><a href="Labs/Lab1/images/sevsegwaveform.png"></a> TODO</p>
+<p><img src="images/lab1waveform.png" class="img-fluid" alt="Waveform"> Labs/Lab1/images/lab1waveform.png</p>
 <p>When run, the testbenches finished with the following message, indicating a successful run.</p>
 <p>16 tests completed with 0 errors.</p>
-<p>All testbenches and testvector files can be found <a href="https://github.com/Marina-Bellido/E155-labs-code/tree/main/lab1/fpga/src">here</a>.</p>
 </section>
 </section>
 <section id="hardware" class="level2">
@@ -290,7 +279,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 <p>After soldering all of the components to my board, I was having weird issues with the LEDS not turning on. After lots of troubleshooting, I eventually traced it down to a bad solder joint in the neighbouring resistors and after reflowing it the board was working correctly.</p>
 <p>The assembled board can be seen here:</p>
-<p><img src="images/board.png" class="img-fluid"></p>
+<p>PICTURE #TODO</p>
 </section>
 </section>
 <section id="segment-display-circuit" class="level2">
@@ -298,37 +287,17 @@ ul.task-list li input[type="checkbox"] {
 <p>The 7-segment display is a common-anode type, meaning one pin is tied to 3.3 V while the remaining pins connect through current-limiting resistors to the FPGA’s I/O. Driving an I/O pin low turns on the corresponding LED segment.</p>
 <section id="resistor-calculation" class="level3">
 <h3 class="anchored" data-anchor-id="resistor-calculation">Resistor Calculation</h3>
-<p>To determine the appropriate resistor value, I used the forward voltage and current ratings from the 7-segment display datasheet. In the datasheet, the voltage drop is typically 2.1 V, so with a 3.3 V supply voltage the resistor will have 1.2 V going through it. I wanted to keep the current within the labs constraints 5-20mA to ensure low power draw so the LEDs were bright enough to see. I choose a 150ohms resistor which ended up giving me a current of 8mA (within range).</p>
-</section>
-<section id="counter-frequency-value" class="level3">
-<h3 class="anchored" data-anchor-id="counter-frequency-value">Counter Frequency Value</h3>
-<p>I used the starter code given on the website which had a clk that had a frequency of 2.4MHz and the opjective was to blink LED[2] at a frequency of 2.4Hz. To achieve that I divided the given frequency by the desired and then divided again by 2 since the clk has two edges. That resulted in 5M cycles every toggle.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/frequency.jpeg" class="img-fluid figure-img"></p>
-<figcaption>Correct frequency output for led[2] = 2.4 Hz</figcaption>
-</figure>
-</div>
+<p>To determine the appropriate resistor value, I used the forward voltage and current ratings from the 7-segment display datasheet FINISH TODO!!!</p>
 </section>
 </section>
 <section id="schematic" class="level2">
 <h2 class="anchored" data-anchor-id="schematic">Schematic</h2>
 <p>The circuit schematic consists of the FPGA, DIP switches, LEDs, and a 7-segment display.</p>
-<p><img src="images/schematic.png" class="img-fluid"></p>
+<p>PICTURE !!! TODO</p>
 </section>
 <section id="results" class="level2">
 <h2 class="anchored" data-anchor-id="results">Results</h2>
 <p>The E155 development board is fully assembled and operational. The FPGA, programmed with synthesized Verilog, drives the LEDs and 7-segment display as specified, with functionality verified in both simulation and hardware testing. The 7-segment display presents all digits clearly with uniform brightness, and overall the design meets every requirement for the lab.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/brightnesss.jpeg" class="img-fluid figure-img"></p>
-<figcaption>Uniform Brightness for the 7-segment Display</figcaption>
-</figure>
-</div>
-</section>
-<section id="ai-sections" class="level2">
-<h2 class="anchored" data-anchor-id="ai-sections">AI Sections</h2>
-<p>My AI section can be found in the following link: <a href="https://docs.google.com/document/d/1s_RQ60bOdmPuav-fsFYPwvEC0DmVWXiaZDkT89pZTqk/edit?usp=sharing">AI SECTION</a></p>
 
 
 </section>
@@ -406,7 +375,7 @@ ul.task-list li input[type="checkbox"] {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/Marina-Bellido\.github\.io\/E155-Portfolio\/");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

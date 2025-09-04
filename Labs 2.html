@@ -6,11 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Marina Bellido">
-<meta name="dcterms.date" content="2025-08-29">
-<meta name="description" content="Hours Spent on lab: 25">
 
-<title>Lab 1: FPGA and MCU Setup and Testing – E155 Portfolio</title>
+<title>E155 Labs – E155 Portfolio</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -26,23 +23,23 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -72,7 +69,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
-<link rel="stylesheet" href="../../styles.css">
+<link rel="stylesheet" href="styles.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -82,7 +79,7 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="./index.html">
     <span class="navbar-title">E155 Portfolio</span>
     </a>
   </div>
@@ -93,19 +90,19 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../Labs.html"> 
+    <a class="nav-link active" href="./Labs.html" aria-current="page"> 
 <span class="menu-text">Labs</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../Resources.html"> 
+    <a class="nav-link" href="./Resources.html"> 
 <span class="menu-text">Resources</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../blog.html"> 
+    <a class="nav-link" href="./blog.html"> 
 <span class="menu-text">Blogs</span></a>
   </li>  
 </ul>
@@ -124,25 +121,13 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
-  <li><a href="#fpga-design" id="toc-fpga-design" class="nav-link" data-scroll-target="#fpga-design">FPGA Design</a>
-  <ul class="collapse">
-  <li><a href="#steps" id="toc-steps" class="nav-link" data-scroll-target="#steps">Steps</a></li>
-  <li><a href="#aproach" id="toc-aproach" class="nav-link" data-scroll-target="#aproach">Aproach</a></li>
-  <li><a href="#testing" id="toc-testing" class="nav-link" data-scroll-target="#testing">Testing</a></li>
-  </ul></li>
-  <li><a href="#hardware" id="toc-hardware" class="nav-link" data-scroll-target="#hardware">Hardware</a>
-  <ul class="collapse">
-  <li><a href="#board-assembly" id="toc-board-assembly" class="nav-link" data-scroll-target="#board-assembly">Board Assembly</a></li>
-  </ul></li>
-  <li><a href="#segment-display-circuit" id="toc-segment-display-circuit" class="nav-link" data-scroll-target="#segment-display-circuit">7-Segment Display circuit</a>
-  <ul class="collapse">
-  <li><a href="#resistor-calculation" id="toc-resistor-calculation" class="nav-link" data-scroll-target="#resistor-calculation">Resistor Calculation</a></li>
-  <li><a href="#counter-frequency-value" id="toc-counter-frequency-value" class="nav-link" data-scroll-target="#counter-frequency-value">Counter Frequency Value</a></li>
-  </ul></li>
-  <li><a href="#schematic" id="toc-schematic" class="nav-link" data-scroll-target="#schematic">Schematic</a></li>
-  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
-  <li><a href="#ai-sections" id="toc-ai-sections" class="nav-link" data-scroll-target="#ai-sections">AI Sections</a></li>
+  <li><a href="#lab-1-fpga-and-mcu-setup-and-testing" id="toc-lab-1-fpga-and-mcu-setup-and-testing" class="nav-link active" data-scroll-target="#lab-1-fpga-and-mcu-setup-and-testing">Lab 1: FPGA and MCU Setup and Testing</a></li>
+  <li><a href="#lab-2-multiplexed-7-segment-display" id="toc-lab-2-multiplexed-7-segment-display" class="nav-link" data-scroll-target="#lab-2-multiplexed-7-segment-display">Lab 2: Multiplexed 7-Segment Display</a></li>
+  <li><a href="#lab-3-keypad-scanner" id="toc-lab-3-keypad-scanner" class="nav-link" data-scroll-target="#lab-3-keypad-scanner">Lab 3: Keypad Scanner</a></li>
+  <li><a href="#lab-4-digital-audio" id="toc-lab-4-digital-audio" class="nav-link" data-scroll-target="#lab-4-digital-audio">Lab 4: Digital Audio</a></li>
+  <li><a href="#lab-5-interrupts" id="toc-lab-5-interrupts" class="nav-link" data-scroll-target="#lab-5-interrupts">Lab 5: Interrupts</a></li>
+  <li><a href="#lab-6-the-internet-of-things-and-serial-peripheral-interface" id="toc-lab-6-the-internet-of-things-and-serial-peripheral-interface" class="nav-link" data-scroll-target="#lab-6-the-internet-of-things-and-serial-peripheral-interface">Lab 6: The Internet of Things and Serial Peripheral Interface</a></li>
+  <li><a href="#lab-7-the-advanced-encryption-standard" id="toc-lab-7-the-advanced-encryption-standard" class="nav-link" data-scroll-target="#lab-7-the-advanced-encryption-standard">Lab 7: The Advanced Encryption Standard</a></li>
   </ul>
 </nav>
     </div>
@@ -151,31 +136,14 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Lab 1: FPGA and MCU Setup and Testing</h1>
+<h1 class="title">E155 Labs</h1>
 </div>
 
-<div>
-  <div class="description">
-    Hours Spent on lab: 25
-  </div>
-</div>
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Marina Bellido </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">August 29, 2025</p>
-    </div>
-  </div>
   
     
   </div>
@@ -185,150 +153,33 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="introduction" class="level2">
-<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
-<p>In Lab 1, the overall goal was to ensure our E155 Development Boards were working correctly solder all components on the board and then programming the FPGA and MCU. Both boards (FPGA and MCU) were initially programmed with example code to ensure the software flow was working. Subsequently, our task was to implement a custom design to drive a 7-segment display and several LEDs, with inputs provided through DIP switches.</p>
+<section id="lab-1-fpga-and-mcu-setup-and-testing" class="level2">
+<h2 class="anchored" data-anchor-id="lab-1-fpga-and-mcu-setup-and-testing">Lab 1: FPGA and MCU Setup and Testing</h2>
+<p><a href="./Labs/Lab1/Lab1.html">Lab Report 1</a></p>
 </section>
-<section id="fpga-design" class="level2">
-<h2 class="anchored" data-anchor-id="fpga-design">FPGA Design</h2>
-<section id="steps" class="level3">
-<h3 class="anchored" data-anchor-id="steps">Steps</h3>
-<p>As shown in the <a href="https://hmc-e155.github.io/lab/lab1/#fpga-design">Specifications</a>, 4 DIP switch controller has to be design to control 3 LEDs and a 7-segment display. Having the following inputs and outputs:</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>OUTPUT</th>
-<th>INPUT</th>
-<th>OPERATION</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>LED 0</td>
-<td>S[0:1]</td>
-<td>XOR</td>
-</tr>
-<tr class="even">
-<td>LED 1</td>
-<td>S[2:3]</td>
-<td>AND</td>
-</tr>
-<tr class="odd">
-<td>LED 2</td>
-<td>48 MHz clock</td>
-<td>2.4 Hz blink</td>
-</tr>
-<tr class="even">
-<td>7-Segment Display</td>
-<td>S[0:3]</td>
-<td>binary decoder</td>
-</tr>
-</tbody>
-</table>
+<section id="lab-2-multiplexed-7-segment-display" class="level2">
+<h2 class="anchored" data-anchor-id="lab-2-multiplexed-7-segment-display">Lab 2: Multiplexed 7-Segment Display</h2>
+<p><a href="./Labs/Lab2/Lab2.html">Lab Report 2</a></p>
 </section>
-<section id="aproach" class="level3">
-<h3 class="anchored" data-anchor-id="aproach">Aproach</h3>
-<p>I build my design using two SystemVerilog modules, one for the 7-segment display and the second one a top module that also included the led logic:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 37%">
-<col style="width: 62%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>SystemVerilog Module</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>lab1_mb</td>
-<td>Top FPGA specific module, includes clock module</td>
-</tr>
-<tr class="even">
-<td>sevseg</td>
-<td>7-segment display combinational logic</td>
-</tr>
-</tbody>
-</table>
-<p>Bellow is the design of the block diagram designed:</p>
-<p><img src="images/blockdiagram.png" class="img-fluid"></p>
-<p>The FPGA-specific top module can be found <a href="https://github.com/Marina-Bellido/E155-labs-code/blob/main/lab1/fpga/src/lab1_mb.sv">here</a>, and the 7-segment display module is <a href="https://github.com/Marina-Bellido/E155-labs-code/blob/main/lab1/fpga/src/sevseg.sv">here</a>.</p>
+<section id="lab-3-keypad-scanner" class="level2">
+<h2 class="anchored" data-anchor-id="lab-3-keypad-scanner">Lab 3: Keypad Scanner</h2>
+<p><a href="./Labs/Lab3/Lab3.html">Lab Report 3</a></p>
 </section>
-<section id="testing" class="level3">
-<h3 class="anchored" data-anchor-id="testing">Testing</h3>
-<p>I ran into issues when running QuestaSim due to not being able to add the library iCE40 needed for the counter implementation we were using. I solved that by starting questa directly from Lattice Radiant, which did allow me to add the specific library.</p>
-<p>Once I had Questa working, I created two testbenches to verify that my Verilog was working correctly for both modules. These testbenches load a series of testvectors that simulate all of the possible combinations of switches and checks that LEDs 0 and 1 along with the 7-segment display have the appropriate outputs.</p>
-<p>The resulting waveforms can be found below:</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/lab1waveform.png" class="img-fluid figure-img"></p>
-<figcaption>Resulting waveform is pictured below for the top module that included both the LEDs and the 7-segment display</figcaption>
-</figure>
-</div>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/sevsegwaveform.png" class="img-fluid figure-img"></p>
-<figcaption>Resulting waveform is pictured below for the 7-segment display module</figcaption>
-</figure>
-</div>
-<p>When run, the testbenches finished with the following message, indicating a successful run.</p>
-<p>16 tests completed with 0 errors.</p>
-<p>All testbenches and testvector files can be found <a href="https://github.com/Marina-Bellido/E155-labs-code/tree/main/lab1/fpga/src">here</a>.</p>
+<section id="lab-4-digital-audio" class="level2">
+<h2 class="anchored" data-anchor-id="lab-4-digital-audio">Lab 4: Digital Audio</h2>
+<p><a href="./Labs/Lab4/Lab4.html">Lab Report 4</a></p>
 </section>
+<section id="lab-5-interrupts" class="level2">
+<h2 class="anchored" data-anchor-id="lab-5-interrupts">Lab 5: Interrupts</h2>
+<p><a href="./Labs/Lab5/Lab5.html">Lab Report 5</a></p>
 </section>
-<section id="hardware" class="level2">
-<h2 class="anchored" data-anchor-id="hardware">Hardware</h2>
-<section id="board-assembly" class="level3">
-<h3 class="anchored" data-anchor-id="board-assembly">Board Assembly</h3>
-<p>In lab1, I assembled a custom printed circuit board which hosts the MCU and FPGA boards. The board has several features that are convenient for developing embedded systems such as:</p>
-<ul>
-<li>Pins which can be directly routed from the MCU to the FPGA via the board</li>
-<li>Extension headers for the mikroBUS and 6-pin PMOD standard</li>
-<li>User configurable LEDs, pushbuttons, and slider switches.</li>
-<li>Header to route pins via a ribbon cable to a separate breadboard adapter PCB which can be inserted into a solderless breadboard.</li>
-</ul>
-<p>After soldering all of the components to my board, I was having weird issues with the LEDS not turning on. After lots of troubleshooting, I eventually traced it down to a bad solder joint in the neighbouring resistors and after reflowing it the board was working correctly.</p>
-<p>The assembled board can be seen here:</p>
-<p><img src="images/board.png" class="img-fluid"></p>
+<section id="lab-6-the-internet-of-things-and-serial-peripheral-interface" class="level2">
+<h2 class="anchored" data-anchor-id="lab-6-the-internet-of-things-and-serial-peripheral-interface">Lab 6: The Internet of Things and Serial Peripheral Interface</h2>
+<p><a href="./Labs/Lab6/Lab6.html">Lab Report 6</a></p>
 </section>
-</section>
-<section id="segment-display-circuit" class="level2">
-<h2 class="anchored" data-anchor-id="segment-display-circuit">7-Segment Display circuit</h2>
-<p>The 7-segment display is a common-anode type, meaning one pin is tied to 3.3 V while the remaining pins connect through current-limiting resistors to the FPGA’s I/O. Driving an I/O pin low turns on the corresponding LED segment.</p>
-<section id="resistor-calculation" class="level3">
-<h3 class="anchored" data-anchor-id="resistor-calculation">Resistor Calculation</h3>
-<p>To determine the appropriate resistor value, I used the forward voltage and current ratings from the 7-segment display datasheet. In the datasheet, the voltage drop is typically 2.1 V, so with a 3.3 V supply voltage the resistor will have 1.2 V going through it. I wanted to keep the current within the labs constraints 5-20mA to ensure low power draw so the LEDs were bright enough to see. I choose a 150ohms resistor which ended up giving me a current of 8mA (within range).</p>
-</section>
-<section id="counter-frequency-value" class="level3">
-<h3 class="anchored" data-anchor-id="counter-frequency-value">Counter Frequency Value</h3>
-<p>I used the starter code given on the website which had a clk that had a frequency of 2.4MHz and the opjective was to blink LED[2] at a frequency of 2.4Hz. To achieve that I divided the given frequency by the desired and then divided again by 2 since the clk has two edges. That resulted in 5M cycles every toggle.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/frequency.jpeg" class="img-fluid figure-img"></p>
-<figcaption>Correct frequency output for led[2] = 2.4 Hz</figcaption>
-</figure>
-</div>
-</section>
-</section>
-<section id="schematic" class="level2">
-<h2 class="anchored" data-anchor-id="schematic">Schematic</h2>
-<p>The circuit schematic consists of the FPGA, DIP switches, LEDs, and a 7-segment display.</p>
-<p><img src="images/schematic.png" class="img-fluid"></p>
-</section>
-<section id="results" class="level2">
-<h2 class="anchored" data-anchor-id="results">Results</h2>
-<p>The E155 development board is fully assembled and operational. The FPGA, programmed with synthesized Verilog, drives the LEDs and 7-segment display as specified, with functionality verified in both simulation and hardware testing. The 7-segment display presents all digits clearly with uniform brightness, and overall the design meets every requirement for the lab.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/brightnesss.jpeg" class="img-fluid figure-img"></p>
-<figcaption>Uniform Brightness for the 7-segment Display</figcaption>
-</figure>
-</div>
-</section>
-<section id="ai-sections" class="level2">
-<h2 class="anchored" data-anchor-id="ai-sections">AI Sections</h2>
-<p>My AI section can be found in the following link: <a href="https://docs.google.com/document/d/1s_RQ60bOdmPuav-fsFYPwvEC0DmVWXiaZDkT89pZTqk/edit?usp=sharing">AI SECTION</a></p>
+<section id="lab-7-the-advanced-encryption-standard" class="level2">
+<h2 class="anchored" data-anchor-id="lab-7-the-advanced-encryption-standard">Lab 7: The Advanced Encryption Standard</h2>
+<p><a href="./Labs/Lab7/Lab7.html">Lab Report 7</a></p>
 
 
 </section>
@@ -406,7 +257,7 @@ ul.task-list li input[type="checkbox"] {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/Marina-Bellido\.github\.io\/E155-Portfolio\/");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

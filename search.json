@@ -53,7 +53,7 @@
     "href": "Labs/Lab1/Lab1.html#segment-display-circuit",
     "title": "Lab 1: FPGA and MCU Setup and Testing",
     "section": "7-Segment Display circuit",
-    "text": "7-Segment Display circuit\nThe 7-segment display is a common-anode type, meaning one pin is tied to 3.3 V while the remaining pins connect through current-limiting resistors to the FPGA’s I/O. Driving an I/O pin low turns on the corresponding LED segment.\n\nResistor Calculation\nTo determine the appropriate resistor value, I used the forward voltage and current ratings from the 7-segment display datasheet\nFINISH TODO!!!\n\n\nCounter Frequency Value\nTODO!!!!\n\n\n\nCorrect frequency output for led[2] = 2.4 Hz"
+    "text": "7-Segment Display circuit\nThe 7-segment display is a common-anode type, meaning one pin is tied to 3.3 V while the remaining pins connect through current-limiting resistors to the FPGA’s I/O. Driving an I/O pin low turns on the corresponding LED segment.\n\nResistor Calculation\nTo determine the appropriate resistor value, I used the forward voltage and current ratings from the 7-segment display datasheet. In the datasheet, the voltage drop is typically 2.1 V, so with a 3.3 V supply voltage the resistor will have 1.2 V going through it. I wanted to keep the current within the labs constraints 5-20mA to ensure low power draw so the LEDs were bright enough to see. I choose a 150ohms resistor which ended up giving me a current of 8mA (within range).\n\n\nCounter Frequency Value\nI used the starter code given on the website which had a clk that had a frequency of 2.4MHz and the opjective was to blink LED[2] at a frequency of 2.4Hz. To achieve that I divided the given frequency by the desired and then divided again by 2 since the clk has two edges. That resulted in 5M cycles every toggle.\n\n\n\nCorrect frequency output for led[2] = 2.4 Hz"
   },
   {
     "objectID": "Labs/Lab1/Lab1.html#schematic",
@@ -68,6 +68,13 @@
     "title": "Lab 1: FPGA and MCU Setup and Testing",
     "section": "Results",
     "text": "Results\nThe E155 development board is fully assembled and operational. The FPGA, programmed with synthesized Verilog, drives the LEDs and 7-segment display as specified, with functionality verified in both simulation and hardware testing. The 7-segment display presents all digits clearly with uniform brightness, and overall the design meets every requirement for the lab.\n\n\n\nUniform Brightness for the 7-segment Display"
+  },
+  {
+    "objectID": "Labs/Lab1/Lab1.html#ai-sections",
+    "href": "Labs/Lab1/Lab1.html#ai-sections",
+    "title": "Lab 1: FPGA and MCU Setup and Testing",
+    "section": "AI Sections",
+    "text": "AI Sections\nMy AI section can be found in the following link: AI SECTION"
   },
   {
     "objectID": "Labs.html",

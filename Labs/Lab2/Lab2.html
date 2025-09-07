@@ -7,8 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Marina Bellido">
-<meta name="dcterms.date" content="2025-08-29">
-<meta name="description" content="Welcome">
+<meta name="dcterms.date" content="2025-09-06">
+<meta name="description" content="Hours Spent on lab: 15">
 
 <title>Lab 2: Multiplexed 7-Segment Display – E155 Portfolio</title>
 <style>
@@ -119,8 +119,26 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#design-and-testing-methodology" id="toc-design-and-testing-methodology" class="nav-link" data-scroll-target="#design-and-testing-methodology">Design and Testing Methodology</a></li>
+  <li><a href="#technical-documentation" id="toc-technical-documentation" class="nav-link" data-scroll-target="#technical-documentation">Technical Documentation:</a>
+  <ul class="collapse">
+  <li><a href="#block-diagram" id="toc-block-diagram" class="nav-link" data-scroll-target="#block-diagram">Block Diagram</a></li>
+  <li><a href="#schematic" id="toc-schematic" class="nav-link" data-scroll-target="#schematic">Schematic</a></li>
+  </ul></li>
+  <li><a href="#results-and-discussion" id="toc-results-and-discussion" class="nav-link" data-scroll-target="#results-and-discussion">Results and Discussion</a>
+  <ul class="collapse">
+  <li><a href="#testbench-simulation" id="toc-testbench-simulation" class="nav-link" data-scroll-target="#testbench-simulation">Testbench Simulation</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#ai-sections" id="toc-ai-sections" class="nav-link" data-scroll-target="#ai-sections">AI Sections</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -128,15 +146,11 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Lab 2: Multiplexed 7-Segment Display</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">reflection</div>
-    <div class="quarto-category">labreport</div>
-  </div>
-  </div>
+</div>
 
 <div>
   <div class="description">
-    Welcome
+    Hours Spent on lab: 15
   </div>
 </div>
 
@@ -153,7 +167,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 29, 2025</p>
+      <p class="date">September 6, 2025</p>
     </div>
   </div>
   
@@ -165,8 +179,100 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>In this lab, an FPGA design was created to read two 4-bit binary inputs from switch sets and display them on a 2-digit seven-segment display. The circuit also calculates the sum of the two numbers and outputs it in binary using five LEDs. To minimize hardware usage, time multiplexing is employed so that both digits can be shown with a single decoder module and shared output pins.</p>
+</section>
+<section id="design-and-testing-methodology" class="level2">
+<h2 class="anchored" data-anchor-id="design-and-testing-methodology">Design and Testing Methodology</h2>
+<p>For this lab I build from lab 1. I already had my 7-segment display decoder and the counter, which I editted to run at a frequnecy of 60KHz (Bc it’s a frequency humans can’t detect, so you wouldn’t be able to perceive the shifting between the two displays). On top of that, I added an adder for the LEDs addition. I had my two DIP switches as inputs and used the counter producing that slower clock to alternate which set of switches is sent to the 7-segment decoder and ensures that the appropriate anode is activated.</p>
+</section>
+<section id="technical-documentation" class="level2">
+<h2 class="anchored" data-anchor-id="technical-documentation">Technical Documentation:</h2>
+<p>My code can be found here <a href="https://github.com/Marina-Bellido/E155-labs-code/tree/main/lab2">Github Source</a></p>
+<section id="block-diagram" class="level3">
+<h3 class="anchored" data-anchor-id="block-diagram">Block Diagram</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/blockdiagram2.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 1: Block Driagram Lab2</figcaption>
+</figure>
+</div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>SystemVerilog Module</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>lab2_mb.sv</td>
+<td>Top module with adder, counter, and input selection</td>
+</tr>
+<tr class="even">
+<td>sevseg</td>
+<td>7-segment display decoder</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="schematic" class="level3">
+<h3 class="anchored" data-anchor-id="schematic">Schematic</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/schematic2.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 2: Schematic Lab2 - Layout of the design</figcaption>
+</figure>
+</div>
+<ul>
+<li>Internal 100 k pullup resistor for the DIP switches so they are not floating.</li>
+<li>The PMP transistors are connected with a 330 current-limiting resistor to ensure that they didn’t pull more than 8 mA (max current the I/O pins can supply: 4.13 of the FPGA datasheet). The PMP transistors had a voltage drop of 0.65 V.</li>
+<li>The LEDs in the 7-segment display have a voltage drop of 2.1 V (datasheet), so a current-limiting resistor of 200 limits the current through the FPGA to 8 mA. <a href="https://hmc-e155.github.io/assets/doc/MAN64x0%20Series.pdf">Datasheet:</a></li>
+<li>The output sum LEDs have a voltage drop of 2.35 V (datasheet), so 100 current-limiting resistors were selected.</li>
+</ul>
+</section>
+</section>
+<section id="results-and-discussion" class="level2">
+<h2 class="anchored" data-anchor-id="results-and-discussion">Results and Discussion</h2>
+<section id="testbench-simulation" class="level3">
+<h3 class="anchored" data-anchor-id="testbench-simulation">Testbench Simulation</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Waveformslab2sel10.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 3: Screenshot of a QuestaSim simulation for lab2_mb.sv for sel=10</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Waveformslab2sel01.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 4: Screenshot of a QuestaSim simulation for lab2_mb.sv for sel=01</figcaption>
+</figure>
+</div>
+<p>Figure 3 and 4 show the QuestaSim simulation validating my Sytem Verilog code.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Waveformclkchecking.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 5: Screenshot of a QuestaSim simulation for selection switching</figcaption>
+</figure>
+</div>
+<p>Figure 5 shows the QuestaSim simulation validating how everytime clk_singal is shifting between the two display numbers.</p>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>The design correctly displays two digits on the seven-segment display simultaneously using only one set of pins through time-multiplexing. The LEDs accurately represent the sum for all input values. When implemented on the FPGA, the circuit functions as expected and fulfills all intended objectives and specifications.</p>
+</section>
+<section id="ai-sections" class="level2">
+<h2 class="anchored" data-anchor-id="ai-sections">AI Sections</h2>
+<p>My AI section can be found in the following link: <a href="https://docs.google.com/document/d/1M4vq1fxVxiHGRMAB5_xYYifepeg-lTdIThiSsfZSKiQ/edit?usp=sharing">AI SECTION</a></p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

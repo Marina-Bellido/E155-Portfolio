@@ -77,6 +77,55 @@
     "text": "AI Sections\nMy AI section can be found in the following link: AI SECTION"
   },
   {
+    "objectID": "Labs/Lab2/Lab2.html",
+    "href": "Labs/Lab2/Lab2.html",
+    "title": "Lab 2: Multiplexed 7-Segment Display",
+    "section": "",
+    "text": "In this lab, an FPGA design was created to read two 4-bit binary inputs from switch sets and display them on a 2-digit seven-segment display. The circuit also calculates the sum of the two numbers and outputs it in binary using five LEDs. To minimize hardware usage, time multiplexing is employed so that both digits can be shown with a single decoder module and shared output pins."
+  },
+  {
+    "objectID": "Labs/Lab2/Lab2.html#introduction",
+    "href": "Labs/Lab2/Lab2.html#introduction",
+    "title": "Lab 2: Multiplexed 7-Segment Display",
+    "section": "",
+    "text": "In this lab, an FPGA design was created to read two 4-bit binary inputs from switch sets and display them on a 2-digit seven-segment display. The circuit also calculates the sum of the two numbers and outputs it in binary using five LEDs. To minimize hardware usage, time multiplexing is employed so that both digits can be shown with a single decoder module and shared output pins."
+  },
+  {
+    "objectID": "Labs/Lab2/Lab2.html#design-and-testing-methodology",
+    "href": "Labs/Lab2/Lab2.html#design-and-testing-methodology",
+    "title": "Lab 2: Multiplexed 7-Segment Display",
+    "section": "Design and Testing Methodology",
+    "text": "Design and Testing Methodology\nFor this lab I build from lab 1. I already had my 7-segment display decoder and the counter, which I editted to run at a frequnecy of 60KHz (Bc it’s a frequency humans can’t detect, so you wouldn’t be able to perceive the shifting between the two displays). On top of that, I added an adder for the LEDs addition. I had my two DIP switches as inputs and used the counter producing that slower clock to alternate which set of switches is sent to the 7-segment decoder and ensures that the appropriate anode is activated."
+  },
+  {
+    "objectID": "Labs/Lab2/Lab2.html#technical-documentation",
+    "href": "Labs/Lab2/Lab2.html#technical-documentation",
+    "title": "Lab 2: Multiplexed 7-Segment Display",
+    "section": "Technical Documentation:",
+    "text": "Technical Documentation:\nMy code can be found here Github Source\n\nBlock Diagram\n\n\n\nFigure 1: Block Driagram Lab2\n\n\n\n\n\n\n\n\n\nSystemVerilog Module\nDescription\n\n\n\n\nlab2_mb.sv\nTop module with adder, counter, and input selection\n\n\nsevseg\n7-segment display decoder\n\n\n\n\n\nSchematic\n\n\n\nFigure 2: Schematic Lab2 - Layout of the design\n\n\n\nInternal 100 k pullup resistor for the DIP switches so they are not floating.\nThe PMP transistors are connected with a 330 current-limiting resistor to ensure that they didn’t pull more than 8 mA (max current the I/O pins can supply: 4.13 of the FPGA datasheet). The PMP transistors had a voltage drop of 0.65 V.\nThe LEDs in the 7-segment display have a voltage drop of 2.1 V (datasheet), so a current-limiting resistor of 200 limits the current through the FPGA to 8 mA. Datasheet:\nThe output sum LEDs have a voltage drop of 2.35 V (datasheet), so 100 current-limiting resistors were selected."
+  },
+  {
+    "objectID": "Labs/Lab2/Lab2.html#results-and-discussion",
+    "href": "Labs/Lab2/Lab2.html#results-and-discussion",
+    "title": "Lab 2: Multiplexed 7-Segment Display",
+    "section": "Results and Discussion",
+    "text": "Results and Discussion\n\nTestbench Simulation\n\n\n\nFigure 3: Screenshot of a QuestaSim simulation for lab2_mb.sv for sel=10\n\n\n\n\n\nFigure 4: Screenshot of a QuestaSim simulation for lab2_mb.sv for sel=01\n\n\nFigure 3 and 4 show the QuestaSim simulation validating my Sytem Verilog code.\n\n\n\nFigure 5: Screenshot of a QuestaSim simulation for selection switching\n\n\nFigure 5 shows the QuestaSim simulation validating how everytime clk_singal is shifting between the two display numbers."
+  },
+  {
+    "objectID": "Labs/Lab2/Lab2.html#conclusion",
+    "href": "Labs/Lab2/Lab2.html#conclusion",
+    "title": "Lab 2: Multiplexed 7-Segment Display",
+    "section": "Conclusion",
+    "text": "Conclusion\nThe design correctly displays two digits on the seven-segment display simultaneously using only one set of pins through time-multiplexing. The LEDs accurately represent the sum for all input values. When implemented on the FPGA, the circuit functions as expected and fulfills all intended objectives and specifications."
+  },
+  {
+    "objectID": "Labs/Lab2/Lab2.html#ai-sections",
+    "href": "Labs/Lab2/Lab2.html#ai-sections",
+    "title": "Lab 2: Multiplexed 7-Segment Display",
+    "section": "AI Sections",
+    "text": "AI Sections\nMy AI section can be found in the following link: AI SECTION"
+  },
+  {
     "objectID": "Labs.html",
     "href": "Labs.html",
     "title": "E155 Labs",

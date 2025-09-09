@@ -136,7 +136,6 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#testbench-simulation" id="toc-testbench-simulation" class="nav-link" data-scroll-target="#testbench-simulation">Testbench Simulation</a></li>
   </ul></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
-  <li><a href="#ai-sections" id="toc-ai-sections" class="nav-link" data-scroll-target="#ai-sections">AI Sections</a></li>
   </ul>
 </nav>
     </div>
@@ -232,7 +231,7 @@ ul.task-list li input[type="checkbox"] {
 <ul>
 <li>Internal 100 k pullup resistor for the DIP switches so they are not floating.</li>
 <li>The PMP transistors are connected with a 330 current-limiting resistor to ensure that they didn’t pull more than 8 mA (max current the I/O pins can supply: 4.13 of the FPGA datasheet). The PMP transistors had a voltage drop of 0.65 V.</li>
-<li>The LEDs in the 7-segment display have a voltage drop of 2.1 V (datasheet), so a current-limiting resistor of 200 limits the current through the FPGA to 8 mA. <a href="https://hmc-e155.github.io/assets/doc/MAN64x0%20Series.pdf">Datasheet:</a></li>
+<li>The LEDs in the 7-segment display have a voltage drop of 2.1 V (datasheet), so a current-limiting resistor of 200 limits the current through the FPGA to 8 mA.</li>
 <li>The output sum LEDs have a voltage drop of 2.35 V (datasheet), so 100 current-limiting resistors were selected.</li>
 </ul>
 </section>
@@ -260,16 +259,11 @@ ul.task-list li input[type="checkbox"] {
 <figcaption>Figure 5: Screenshot of a QuestaSim simulation for selection switching</figcaption>
 </figure>
 </div>
-<p>Figure 5 shows the QuestaSim simulation validating how everytime clk_singal is shifting between the two display numbers.</p>
+<p>Figure 5 and 4 show the QuestaSim simulation validating my Sytem Verilog code.</p>
 </section>
 </section>
 <section id="conclusion" class="level2">
 <h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>The design correctly displays two digits on the seven-segment display simultaneously using only one set of pins through time-multiplexing. The LEDs accurately represent the sum for all input values. When implemented on the FPGA, the circuit functions as expected and fulfills all intended objectives and specifications.</p>
-</section>
-<section id="ai-sections" class="level2">
-<h2 class="anchored" data-anchor-id="ai-sections">AI Sections</h2>
-<p>My AI section can be found in the following link: <a href="https://docs.google.com/document/d/1sZ6AG-33zuX3hVz_qwpRxkqVFeKj2ucXWRDyE-K4dxw/edit?usp=sharing">AI SECTION</a></p>
 
 
 </section>
@@ -347,7 +341,7 @@ ul.task-list li input[type="checkbox"] {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/Marina-Bellido\.github\.io\/E155-Portfolio\/");
+        var filterRegex = new RegExp('/' + window.location.host + '/');
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

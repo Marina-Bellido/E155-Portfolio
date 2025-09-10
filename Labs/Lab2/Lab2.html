@@ -231,9 +231,9 @@ ul.task-list li input[type="checkbox"] {
 </div>
 <ul>
 <li>Internal 100 k pullup resistor for the DIP switches so they are not floating.</li>
-<li>The PMP transistors are connected with a 330 current-limiting resistor to ensure that they didn’t pull more than 8 mA (max current the I/O pins can supply: 4.13 of the FPGA datasheet). The PMP transistors had a voltage drop of 0.65 V.</li>
-<li>The LEDs in the 7-segment display have a voltage drop of 2.1 V (datasheet), so a current-limiting resistor of 200 limits the current through the FPGA to 8 mA. <a href="https://hmc-e155.github.io/assets/doc/MAN64x0%20Series.pdf">Datasheet:</a></li>
-<li>The output sum LEDs have a voltage drop of 2.35 V (datasheet), so 100 current-limiting resistors were selected.</li>
+<li>The PNP transistors <a href="https://hmc-e155.github.io/assets/doc/2N3906-D.pdf">datasheet</a> specifies that we want a current of less than 1mA if the max Ic we can deliver to the 7-seg display is 20mA (Datasheet: (IC = 10 mAdc, IB = 1.0 mAdc). Also have a forward voltage from the PMP transistor of 0.6. This would give us a voltage drop of 2.6 and any resistor above 2.6kohms would satisfy our constraints. I chose 3kohms.</li>
+<li>The LEDs in the 7-segment display have a voltage drop of 1.8 V (datasheet), and the PMP has a Vcesat of 0.25. Therefore, to satisfy the constraint of less than 8mA, our resistor value must be above 156.25ohms. I choose a current-limiting resistor of 200 ohms. <a href="https://hmc-e155.github.io/assets/doc/MAN64x0%20Series.pdf">Datasheet:</a></li>
+<li>The output sum LEDs have a voltage drop of 2.35 V (datasheet), so 120 current-limiting resistors were selected in order to achieve a current below 8mA.</li>
 </ul>
 </section>
 </section>

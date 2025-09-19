@@ -186,7 +186,7 @@
     "href": "Labs/Lab2/Lab2.html#conclusion",
     "title": "Lab 2: Multiplexed 7-Segment Display",
     "section": "Conclusion",
-    "text": "Conclusion\nThe design correctly displays two digits on the seven-segment display simultaneously using only one set of pins through time-multiplexing. The LEDs accurately represent the sum for all input values. When implemented on the FPGA, the circuit functions as expected and fulfills all intended objectives and specifications."
+    "text": "Conclusion\nThe design correctly displays two digits on the seven-segment display simultaneously using only one set of pins through time-multiplexing. The LEDs accurately represent the sum for all input values. When implemented on the FPGA, the circuit functions as expected and fulfills all intended objectives and specifications.\n Above you can observe how the one switch is turned on to 1 and the other to 2 as can also be observed on the two display. The leds also add to light up the two right most leds, which would be the binary addition of the two segments (3)."
   },
   {
     "objectID": "Labs/Lab2/Lab2.html#ai-sections",

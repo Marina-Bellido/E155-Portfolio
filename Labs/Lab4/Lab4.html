@@ -7,8 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Marina Bellido">
-<meta name="dcterms.date" content="2025-08-29">
-<meta name="description" content="Welcome">
+<meta name="dcterms.date" content="2025-10-02">
+<meta name="description" content="Hours Spent on lab: 10">
 
 <title>Lab 4: Digital Audio – E155 Portfolio</title>
 <style>
@@ -119,8 +119,23 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#design-methodology" id="toc-design-methodology" class="nav-link" data-scroll-target="#design-methodology">Design Methodology</a></li>
+  <li><a href="#technical-documentation" id="toc-technical-documentation" class="nav-link" data-scroll-target="#technical-documentation">Technical Documentation:</a>
+  <ul class="collapse">
+  <li><a href="#schematic" id="toc-schematic" class="nav-link" data-scroll-target="#schematic">Schematic</a></li>
+  </ul></li>
+  <li><a href="#timer-calculations" id="toc-timer-calculations" class="nav-link" data-scroll-target="#timer-calculations">Timer Calculations</a></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">Results</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#ai-sections" id="toc-ai-sections" class="nav-link" data-scroll-target="#ai-sections">AI Sections</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -128,15 +143,11 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Lab 4: Digital Audio</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">reflection</div>
-    <div class="quarto-category">labreport</div>
-  </div>
-  </div>
+</div>
 
 <div>
   <div class="description">
-    Welcome
+    Hours Spent on lab: 10
   </div>
 </div>
 
@@ -153,7 +164,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 29, 2025</p>
+      <p class="date">October 2, 2025</p>
     </div>
   </div>
   
@@ -165,8 +176,44 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>In this lab, an ARM microcontroller (STMLK324KC microcontroller) was programmed to drive a speaker and play two different songs. The objective was to become familiar with the MCU’s memory-mapped I/O and timer peripherals. The implementation plays the given song, Für Elise, as well as an additional selection of my choice, which was the Minecraft song.</p>
+</section>
+<section id="design-methodology" class="level2">
+<h2 class="anchored" data-anchor-id="design-methodology">Design Methodology</h2>
+<p>I based my implementation on several example libraries from the course, making a number of modifications specific to this lab. The GPIO and RCC libraries were used almost unchanged, but I built the timer and PWM libraries from scratch. To do so, I had to carefully read and understand both the datasheet and the reference manual. I configured two timers (TIM15 and TIM16): one in standard count-up mode and the other in PWM mode. The PWM timer was used to generate the desired output frequency, with the duty cycle fixed at 50% to avoid distorting the sound. Configuring both timers required careful selection of register values to ensure they could play the full range of frequencies and sustain them for the correct durations. The datasheet was essential, as it specified which bits in the RCC register enable the timers’ clocks. It also explained how to configure a timer for PWM mode and route its output to a GPIO pin connected to the speaker. From there, I could also use the counter setup to control delays and note durations.</p>
+</section>
+<section id="technical-documentation" class="level2">
+<h2 class="anchored" data-anchor-id="technical-documentation">Technical Documentation:</h2>
+<p>The source code for the project can be found in the associated <a href="https://github.com/Marina-Bellido/E155-labs-code/tree/main/lab4/fpga/src">GitHub repository.</a></p>
+<section id="schematic" class="level3">
+<h3 class="anchored" data-anchor-id="schematic">Schematic</h3>
+<p><img src="images/schematiclab4.png" class="img-fluid" alt="Figure 1: Schematic of the circuit design for lab4"> The schematic above shows the circuit connected to our speaker. We used an LM386 low-voltage audio power amplifier to take the PWM signal from a GPIO pin on the MCU and drive the speaker to produce sound. The resistor and capacitor values were chosen based on the LM386 datasheet recommendations. Additionally, a potentiometer was included to adjust the speaker’s output volume.</p>
+</section>
+</section>
+<section id="timer-calculations" class="level2">
+<h2 class="anchored" data-anchor-id="timer-calculations">Timer Calculations</h2>
+<p><img src="images/1perctcal.png" class="img-fluid" alt="Figure 2: Individual pitches are calculated to be accurate within 1% across the frequency range of 220-1000 Hz."> <img src="images/freqanddur.png" class="img-fluid" alt="Figure 3: calculations for min/max duration and min/max frequency supported"></p>
+</section>
+<section id="results" class="level2">
+<h2 class="anchored" data-anchor-id="results">Results</h2>
+<video width="600" controls="">
+<source src="images/IMG_9581.MOV" type="video/mp4">
+<p>Your browser does not support the video tag. </p>
+</video></section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>The design successfully outputs two songs in sequence through a speaker, with a potentiometer providing volume control. All pitches and frequencies are generated accurately.</p>
+<p>Conclusion</p>
+<p>The overall design works as expected, and we are able to play Fur Elise and another song of our choice on the speakers, by using the MCU clock to generate a PWM frequency for the tone, as well as for a delay timer. In other words, our PLL clock goes to two timer busses to generate a PWM signal for our frequency and create a timer for our audio. Overall, I spent 20 hours on this lab.</p>
+</section>
+<section id="ai-sections" class="level2">
+<h2 class="anchored" data-anchor-id="ai-sections">AI Sections</h2>
+<p>My AI section can be found in the following link: <a href="https://docs.google.com/document/d/1HOM4KU_rjUMDl5ZWsrAqtAZ-Khf6BMVKil241aD9XFU/edit?usp=sharing">AI SECTION</a></p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

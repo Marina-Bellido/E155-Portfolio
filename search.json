@@ -158,28 +158,28 @@
     "href": "Labs/Lab6/Lab6.html#design-methodology",
     "title": "Lab 6: The Internet of Things and Serial Peripheral Interface",
     "section": "Design Methodology",
-    "text": "Design Methodology"
+    "text": "Design Methodology\nTo build this system, I first needed to understand how SPI communication worked between the ARM microcontroller and the DS1722 temperature sensor. After studying the MCU’s reference manual, I configured the SPI settings—such as baud rate, data size, and duplex mode—and selected appropriate pins for SCLK, MISO, and MOSI, while using a manually controlled chip select (CS) pin. The DS1722 required a specific communication sequence: each transaction began by pulling CS high, sending a command byte (e.g., 0x80 for writes or 0x00–0x02 for reads), and then either sending or receiving data. For read operations, dummy bytes were transmitted to provide the necessary clock pulses for data output. Once communication was properly configured, I wired the MCU and sensor pins (SDO, SDI, SCLK, CS) and verified functionality by writing to and reading from the configuration register. I used an oscilloscope and logic analyzer to visualize data transfer on the MOSI and MISO lines, confirming correct timing and signal behavior. Finally, I tested the complete setup through the web interface by changing resolution settings from the HTML page and confirming that the configuration register updated as expected."
   },
   {
     "objectID": "Labs/Lab6/Lab6.html#technical-documentation",
     "href": "Labs/Lab6/Lab6.html#technical-documentation",
     "title": "Lab 6: The Internet of Things and Serial Peripheral Interface",
     "section": "Technical Documentation:",
-    "text": "Technical Documentation:\nThe source code for the project can be found in the associated GitHub repository.\n\nSchematic\n\n\nFlowchart"
+    "text": "Technical Documentation:\nThe source code for the project can be found in the associated GitHub repository.\nThe DS1722 temperature sensor was used in SPI mode. Datasheet HDSP-511x]\n\nESP8266 Web Server and MCU Interface\nThe ESP8266 acts as a WiFi-enabled web server that allows users to interact with the microcontroller through a simple HTML page. Instead of hosting a full HTTP server on the MCU, the ESP8266 handles all web communication, serving pages over WiFi using the HTTP protocol. The ARM microcontroller sends webpage data and receives user requests through a UART serial connection (TX ↔︎ RX) at 125000 baud. When a browser connects to the ESP8266’s WiFi network (e.g., Lab6ESP_xx) and accesses http://192.168.4.1/, the ESP forwards the request to the MCU in the form /REQ:‘…’. The MCU responds by sending an HTML-formatted webpage, which the ESP then displays. This setup creates a compact IoT system where the MCU gathers and transmits data—such as temperature readings—to the ESP8266, which presents the information on a web interface accessible from any connected device. More information on this: Lab6 E-155 webpage] WEBSITE NAM: http://192.168.4.1/ledoff?"
   },
   {
-    "objectID": "Labs/Lab6/Lab6.html#result-and-discussion",
-    "href": "Labs/Lab6/Lab6.html#result-and-discussion",
+    "objectID": "Labs/Lab6/Lab6.html#result",
+    "href": "Labs/Lab6/Lab6.html#result",
     "title": "Lab 6: The Internet of Things and Serial Peripheral Interface",
-    "section": "Result and Discussion",
-    "text": "Result and Discussion"
+    "section": "Result",
+    "text": "Result\n\nSchematic\n\n\n\nFigure 1: Schematic of the physical circuit.\n\n\n\n\nSPI Trace\n\n\n\nFigure 2: SPI trace of communication between temperature sensor and MCU during a temperature read.\n\n\n\n\nHTML page\n\n\n\nFigure 3: HTML Page"
   },
   {
     "objectID": "Labs/Lab6/Lab6.html#conclusion",
     "href": "Labs/Lab6/Lab6.html#conclusion",
     "title": "Lab 6: The Internet of Things and Serial Peripheral Interface",
     "section": "Conclusion",
-    "text": "Conclusion\nThe design successfully reports the speed of a motor and its direction, updating every second."
+    "text": "Conclusion\nThe system successfully communicates with the SPI-based temperature sensor, configures its resolution, and retrieves temperature readings. Everything is displayed in a HTML page, were one can control an LED and the resolution of the temperature sensor reading. On the webpage, one can observe how the temperature increases if you place your finger on top to warm the sensor. I have been able to build a simple IoT device."
   },
   {
     "objectID": "Labs/Lab6/Lab6.html#ai-sections",

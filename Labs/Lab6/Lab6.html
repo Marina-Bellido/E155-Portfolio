@@ -8,7 +8,7 @@
 
 <meta name="author" content="Marina Bellido">
 <meta name="dcterms.date" content="2025-10-30">
-<meta name="description" content="Hours Spent on lab: 9">
+<meta name="description" content="Hours Spent on lab: 17">
 
 <title>Lab 6: The Internet of Things and Serial Peripheral Interface – E155 Portfolio</title>
 <style>
@@ -128,10 +128,14 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#design-methodology" id="toc-design-methodology" class="nav-link" data-scroll-target="#design-methodology">Design Methodology</a></li>
   <li><a href="#technical-documentation" id="toc-technical-documentation" class="nav-link" data-scroll-target="#technical-documentation">Technical Documentation:</a>
   <ul class="collapse">
-  <li><a href="#schematic" id="toc-schematic" class="nav-link" data-scroll-target="#schematic">Schematic</a></li>
-  <li><a href="#flowchart" id="toc-flowchart" class="nav-link" data-scroll-target="#flowchart">Flowchart</a></li>
+  <li><a href="#esp8266-web-server-and-mcu-interface" id="toc-esp8266-web-server-and-mcu-interface" class="nav-link" data-scroll-target="#esp8266-web-server-and-mcu-interface">ESP8266 Web Server and MCU Interface</a></li>
   </ul></li>
-  <li><a href="#result-and-discussion" id="toc-result-and-discussion" class="nav-link" data-scroll-target="#result-and-discussion">Result and Discussion</a></li>
+  <li><a href="#result" id="toc-result" class="nav-link" data-scroll-target="#result">Result</a>
+  <ul class="collapse">
+  <li><a href="#schematic" id="toc-schematic" class="nav-link" data-scroll-target="#schematic">Schematic</a></li>
+  <li><a href="#spi-trace" id="toc-spi-trace" class="nav-link" data-scroll-target="#spi-trace">SPI Trace</a></li>
+  <li><a href="#html-page" id="toc-html-page" class="nav-link" data-scroll-target="#html-page">HTML page</a></li>
+  </ul></li>
   <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
   <li><a href="#ai-sections" id="toc-ai-sections" class="nav-link" data-scroll-target="#ai-sections">AI Sections</a></li>
   </ul>
@@ -147,7 +151,7 @@ ul.task-list li input[type="checkbox"] {
 
 <div>
   <div class="description">
-    Hours Spent on lab: 9
+    Hours Spent on lab: 17
   </div>
 </div>
 
@@ -182,23 +186,50 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="design-methodology" class="level2">
 <h2 class="anchored" data-anchor-id="design-methodology">Design Methodology</h2>
+<p>To build this system, I first needed to understand how SPI communication worked between the ARM microcontroller and the DS1722 temperature sensor. After studying the MCU’s reference manual, I configured the SPI settings—such as baud rate, data size, and duplex mode—and selected appropriate pins for SCLK, MISO, and MOSI, while using a manually controlled chip select (CS) pin. The DS1722 required a specific communication sequence: each transaction began by pulling CS high, sending a command byte (e.g., 0x80 for writes or 0x00–0x02 for reads), and then either sending or receiving data. For read operations, dummy bytes were transmitted to provide the necessary clock pulses for data output. Once communication was properly configured, I wired the MCU and sensor pins (SDO, SDI, SCLK, CS) and verified functionality by writing to and reading from the configuration register. I used an oscilloscope and logic analyzer to visualize data transfer on the MOSI and MISO lines, confirming correct timing and signal behavior. Finally, I tested the complete setup through the web interface by changing resolution settings from the HTML page and confirming that the configuration register updated as expected.</p>
 </section>
 <section id="technical-documentation" class="level2">
 <h2 class="anchored" data-anchor-id="technical-documentation">Technical Documentation:</h2>
-<p>The source code for the project can be found in the associated <a href="https://github.com/Marina-Bellido/E155-labs-code/tree/main/lab4/fpga/src">GitHub repository.</a></p>
+<p>The source code for the project can be found in the associated <a href="https://github.com/Marina-Bellido/E155-labs-code/tree/main/lab6">GitHub repository.</a></p>
+<p>The DS1722 temperature sensor was used in SPI mode. <a href="https://hmc-e155.github.io/assets/doc/ds1722.pdf">Datasheet HDSP-511x</a>]</p>
+<section id="esp8266-web-server-and-mcu-interface" class="level3">
+<h3 class="anchored" data-anchor-id="esp8266-web-server-and-mcu-interface">ESP8266 Web Server and MCU Interface</h3>
+<p>The ESP8266 acts as a WiFi-enabled web server that allows users to interact with the microcontroller through a simple HTML page. Instead of hosting a full HTTP server on the MCU, the ESP8266 handles all web communication, serving pages over WiFi using the HTTP protocol. The ARM microcontroller sends webpage data and receives user requests through a UART serial connection (TX ↔︎ RX) at 125000 baud. When a browser connects to the ESP8266’s WiFi network (e.g., Lab6ESP_xx) and accesses http://192.168.4.1/, the ESP forwards the request to the MCU in the form /REQ:‘…’. The MCU responds by sending an HTML-formatted webpage, which the ESP then displays. This setup creates a compact IoT system where the MCU gathers and transmits data—such as temperature readings—to the ESP8266, which presents the information on a web interface accessible from any connected device. <a href="https://hmc-e155.github.io/lab/lab6/#esp8266-web-server">More information on this: Lab6 E-155 webpage</a>] WEBSITE NAM: http://192.168.4.1/ledoff?</p>
+</section>
+</section>
+<section id="result" class="level2">
+<h2 class="anchored" data-anchor-id="result">Result</h2>
 <section id="schematic" class="level3">
 <h3 class="anchored" data-anchor-id="schematic">Schematic</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/schematiclab6.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 1: Schematic of the physical circuit.</figcaption>
+</figure>
+</div>
 </section>
-<section id="flowchart" class="level3">
-<h3 class="anchored" data-anchor-id="flowchart">Flowchart</h3>
+<section id="spi-trace" class="level3">
+<h3 class="anchored" data-anchor-id="spi-trace">SPI Trace</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/schematiclab6.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 2: SPI trace of communication between temperature sensor and MCU during a temperature read.</figcaption>
+</figure>
+</div>
 </section>
+<section id="html-page" class="level3">
+<h3 class="anchored" data-anchor-id="html-page">HTML page</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/webpagelab6.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 3: HTML Page</figcaption>
+</figure>
+</div>
 </section>
-<section id="result-and-discussion" class="level2">
-<h2 class="anchored" data-anchor-id="result-and-discussion">Result and Discussion</h2>
 </section>
 <section id="conclusion" class="level2">
 <h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
-<p>The design successfully reports the speed of a motor and its direction, updating every second.</p>
+<p>The system successfully communicates with the SPI-based temperature sensor, configures its resolution, and retrieves temperature readings. Everything is displayed in a HTML page, were one can control an LED and the resolution of the temperature sensor reading. On the webpage, one can observe how the temperature increases if you place your finger on top to warm the sensor. I have been able to build a simple IoT device.</p>
 </section>
 <section id="ai-sections" class="level2">
 <h2 class="anchored" data-anchor-id="ai-sections">AI Sections</h2>

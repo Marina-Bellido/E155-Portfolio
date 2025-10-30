@@ -67,14 +67,14 @@
     "href": "Labs/Lab3/Lab3.html#schematic",
     "title": "Lab 3: Keypad Scanner",
     "section": "SCHEMATIC",
-    "text": "SCHEMATIC\n Figure 3 shows the physical layout of the design. I haven’t drown the switches for the keypad since they are internal to the hardware."
+    "text": "SCHEMATIC\n\n\n\nFigure 3: Schematic of the physical circuit.\n\n\nFigure 3 shows the physical layout of the design. I haven’t drown the switches for the keypad since they are internal to the hardware."
   },
   {
     "objectID": "Labs/Lab3/Lab3.html#results-and-discussion",
     "href": "Labs/Lab3/Lab3.html#results-and-discussion",
     "title": "Lab 3: Keypad Scanner",
     "section": "Results and Discussion",
-    "text": "Results and Discussion\n\nTestbench Simulation\nI have attached questa simulations of all the testbenches created for my modules.\n\n\n\nFigure 4: Screenshot of a QuestaSim simulation for the scanning of the rows (row_counter)\n\n\n\n\n\nFigure 5: Screenshot of a QuestaSim simulation for the bouncer\n\n\n When in S3 pushed=1, go continue and in S5 pushed =0, so go back to S0: CORRECT\n When in S3 pushed=0, go back to S0: CORRECT"
+    "text": "Results and Discussion\n\nTestbench Simulation\nI have attached questa simulations of all the testbenches created for my modules.\n\n\n\nFigure 4: Screenshot of a QuestaSim simulation for the scanning of the rows (row_counter)\n\n\n\n\n\nFigure 5: Screenshot of a QuestaSim simulation for the bouncer\n\n\n\n\n\nFigure 6: Screenshot of a QuestaSim simulation for the fsm S3 pushed=1\n\n\nWhen in S3 pushed=1, go continue and in S5 pushed =0, so go back to S0: CORRECT\n\n\n\nFigure 7: Screenshot of a QuestaSim simulation for the fsm when S3 pushed=0\n\n\nWhen in S3 pushed=0, go back to S0: CORRECT"
   },
   {
     "objectID": "Labs/Lab3/Lab3.html#conclusion",
@@ -87,6 +87,55 @@
     "objectID": "Labs/Lab3/Lab3.html#ai-sections",
     "href": "Labs/Lab3/Lab3.html#ai-sections",
     "title": "Lab 3: Keypad Scanner",
+    "section": "AI Sections",
+    "text": "AI Sections\nMy AI section can be found in the following link: AI SECTION"
+  },
+  {
+    "objectID": "Labs/Lab5/Lab5.html",
+    "href": "Labs/Lab5/Lab5.html",
+    "title": "Lab 5: Interrupts",
+    "section": "",
+    "text": "In this lab, we utilized an ARM microcontroller to determine a motor’s rotational speed and direction through a quadrature encoder, with encoder pulses captured via interrupts to maintain precise and accurate measurements."
+  },
+  {
+    "objectID": "Labs/Lab5/Lab5.html#introduction",
+    "href": "Labs/Lab5/Lab5.html#introduction",
+    "title": "Lab 5: Interrupts",
+    "section": "",
+    "text": "In this lab, we utilized an ARM microcontroller to determine a motor’s rotational speed and direction through a quadrature encoder, with encoder pulses captured via interrupts to maintain precise and accurate measurements."
+  },
+  {
+    "objectID": "Labs/Lab5/Lab5.html#design-methodology",
+    "href": "Labs/Lab5/Lab5.html#design-methodology",
+    "title": "Lab 5: Interrupts",
+    "section": "Design Methodology",
+    "text": "Design Methodology\nI based my design on several example libraries provided for this course, using the GPIO, RCC, and TIM libraries with minimal modification. Building on these, I implemented control for multiple EXTI interrupt controllers.\nFor my design, I chose to use a single interrupt handler that responds to changes on either encoder channel. Each time the handler is triggered, it increments a pulse-count variable and updates the encoder’s current state, recording which channel changed and whether it was a rising or falling edge. The new state is compared to the previous state to determine the motor’s direction using quadrature logic, since the 90° phase difference between channels produces a unique transition pattern for clockwise versus counterclockwise rotation. A checkDirection function evaluates the transition to assign the correct direction. Using a timer, the number of pulses is measured every second. This count is divided by 1632 (the pulses per rotation × 2 channels × counting both rising and falling edges) to calculate the motor’s speed in revolutions per second. The pulse-count variable is then reset to start measuring the next interval.\nThis design uses interrupts to count the encoder pulses, which is more accurate and avoids the tricky task of setting up multiple timers with different frequencies. Only one timer is needed, and it’s used just to check how many pulses occurred every second. The timer runs at a 1 ms rate, so a simple delay_millis function is enough to measure the one-second intervals."
+  },
+  {
+    "objectID": "Labs/Lab5/Lab5.html#technical-documentation",
+    "href": "Labs/Lab5/Lab5.html#technical-documentation",
+    "title": "Lab 5: Interrupts",
+    "section": "Technical Documentation:",
+    "text": "Technical Documentation:\nThe source code for the project can be found in the associated GitHub repository.\n\nSchematic\n\n\n\nFigure 1: Schematic of the circuit design for lab5\n\n\nA 25GA-370 DC Motor was used as the motor/encoder for this lab.Datasheet HDSP-511x\n\n\nFlowchart\n\n\n\nFigure 2: Flowchart for the interrupt logic for lab5\n\n\nThe main loop is executing on the left and the interrupt handler that is triggered whenever an encoder channel pulses is on the right."
+  },
+  {
+    "objectID": "Labs/Lab5/Lab5.html#result-and-discussion",
+    "href": "Labs/Lab5/Lab5.html#result-and-discussion",
+    "title": "Lab 5: Interrupts",
+    "section": "Result and Discussion",
+    "text": "Result and Discussion\nTo test my motor, I connected it to a power supply and adjusted the voltage while it was attached to my circuit. I initially ran the motor at very low speeds in both directions to visually verify that the reported rotation direction matched the actual movement, which it did. I also connected the encoder channels to an oscilloscope and saw how the interaction with the interrupt handler was occurring. \nI also compared the performance of interrupt based code to manual polling at high speeds:\n\n\n\nFigure 5: Oscilloscope Trace showing the frequency. (commented out the delay)\n\n\n\n\n\nFigure 6: Calculations to find Max Revolutions at which you can still accurately display your data without experiencing alliasing.\n\n\n\nInterrupt Vs polling\nIt’s comparing two ways your microcontroller (MCU) can detect signals coming from your encoder (or any input pin):\n\nPolling – constantly checking the pin to see if it changed.\nInterrupts – letting the MCU automatically react when the pin changes.\n\nIn the polling method, the MCU repeatedly checks the state of the input pin in a continuous loop to see if it has changed. This approach is simple to implement, but it can become inefficient because the MCU spends much of its time checking the pin instead of performing other tasks. More importantly, if the encoder signal changes faster than the MCU can check it, pulses may be missed, resulting in inaccurate measurements. In contrast, interrupts allow the MCU to automatically react whenever the pin changes state. When an interrupt is triggered, the MCU immediately pauses its current operations and jumps to a special function designed to handle that event. This ensures that no pulses are missed, even at high speeds, while also freeing the MCU to perform other operations when no encoder changes are occurring. Overall, interrupts provide a faster, more reliable, and more efficient way to handle encoder signals compared to polling."
+  },
+  {
+    "objectID": "Labs/Lab5/Lab5.html#conclusion",
+    "href": "Labs/Lab5/Lab5.html#conclusion",
+    "title": "Lab 5: Interrupts",
+    "section": "Conclusion",
+    "text": "Conclusion\nThe design successfully reports the speed of a motor and its direction, updating every second."
+  },
+  {
+    "objectID": "Labs/Lab5/Lab5.html#ai-sections",
+    "href": "Labs/Lab5/Lab5.html#ai-sections",
+    "title": "Lab 5: Interrupts",
     "section": "AI Sections",
     "text": "AI Sections\nMy AI section can be found in the following link: AI SECTION"
   },
@@ -186,7 +235,7 @@
     "href": "Labs/Lab2/Lab2.html#conclusion",
     "title": "Lab 2: Multiplexed 7-Segment Display",
     "section": "Conclusion",
-    "text": "Conclusion\nThe design correctly displays two digits on the seven-segment display simultaneously using only one set of pins through time-multiplexing. The LEDs accurately represent the sum for all input values. When implemented on the FPGA, the circuit functions as expected and fulfills all intended objectives and specifications.\n Above you can observe how the one switch is turned on to 1 and the other to 2 as can also be observed on the two display. The leds also add to light up the two right most leds, which would be the binary addition of the two segments (3)."
+    "text": "Conclusion\nThe design correctly displays two digits on the seven-segment display simultaneously using only one set of pins through time-multiplexing. The LEDs accurately represent the sum for all input values. When implemented on the FPGA, the circuit functions as expected and fulfills all intended objectives and specifications.\n\n\n\nFigure 6: Example of hardware implementation.\n\n\nAbove you can observe how the one switch is turned on to 1 and the other to 2 as can also be observed on the two display. The leds also add to light up the two right most leds, which would be the binary addition of the two segments (3)."
   },
   {
     "objectID": "Labs/Lab2/Lab2.html#ai-sections",
@@ -221,14 +270,14 @@
     "href": "Labs/Lab4/Lab4.html#technical-documentation",
     "title": "Lab 4: Digital Audio",
     "section": "Technical Documentation:",
-    "text": "Technical Documentation:\nThe source code for the project can be found in the associated GitHub repository.\n\nSchematic\n The schematic above shows the circuit connected to our speaker. We used an LM386 low-voltage audio power amplifier to take the PWM signal from a GPIO pin on the MCU and drive the speaker to produce sound. The resistor and capacitor values were chosen based on the LM386 datasheet recommendations. Additionally, a potentiometer was included to adjust the speaker’s output volume."
+    "text": "Technical Documentation:\nThe source code for the project can be found in the associated GitHub repository.\n\nSchematic\n\n\n\nFigure 1: Schematic of the circuit design for lab4\n\n\nThe schematic above shows the circuit connected to our speaker. We used an LM386 low-voltage audio power amplifier to take the PWM signal from a GPIO pin on the MCU and drive the speaker to produce sound. The resistor and capacitor values were chosen based on the LM386 datasheet recommendations. Additionally, a potentiometer was included to adjust the speaker’s output volume."
   },
   {
     "objectID": "Labs/Lab4/Lab4.html#timer-calculations",
     "href": "Labs/Lab4/Lab4.html#timer-calculations",
     "title": "Lab 4: Digital Audio",
     "section": "Timer Calculations",
-    "text": "Timer Calculations"
+    "text": "Timer Calculations\n\n\n\nFigure 2: Individual pitches are calculated to be accurate within 1% across the frequency range of 220-1000 Hz.\n\n\n\n\n\nFigure 3: calculations for min/max duration and min/max frequency supported"
   },
   {
     "objectID": "Labs/Lab4/Lab4.html#results",

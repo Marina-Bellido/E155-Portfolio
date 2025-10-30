@@ -7,8 +7,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Marina Bellido">
-<meta name="dcterms.date" content="2025-08-29">
-<meta name="description" content="Welcome">
+<meta name="dcterms.date" content="2025-10-02">
+<meta name="description" content="Hours Spent on lab: 10">
 
 <title>Lab 5: Interrupts – E155 Portfolio</title>
 <style>
@@ -119,8 +119,26 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#design-methodology" id="toc-design-methodology" class="nav-link" data-scroll-target="#design-methodology">Design Methodology</a></li>
+  <li><a href="#technical-documentation" id="toc-technical-documentation" class="nav-link" data-scroll-target="#technical-documentation">Technical Documentation:</a>
+  <ul class="collapse">
+  <li><a href="#schematic" id="toc-schematic" class="nav-link" data-scroll-target="#schematic">Schematic</a></li>
+  <li><a href="#flowchart" id="toc-flowchart" class="nav-link" data-scroll-target="#flowchart">Flowchart</a></li>
+  </ul></li>
+  <li><a href="#result-and-discussion" id="toc-result-and-discussion" class="nav-link" data-scroll-target="#result-and-discussion">Result and Discussion</a>
+  <ul class="collapse">
+  <li><a href="#interrupt-vs-polling" id="toc-interrupt-vs-polling" class="nav-link" data-scroll-target="#interrupt-vs-polling">Interrupt Vs polling</a></li>
+  </ul></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion">Conclusion</a></li>
+  <li><a href="#ai-sections" id="toc-ai-sections" class="nav-link" data-scroll-target="#ai-sections">AI Sections</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -128,15 +146,11 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Lab 5: Interrupts</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">reflection</div>
-    <div class="quarto-category">labreport</div>
-  </div>
-  </div>
+</div>
 
 <div>
   <div class="description">
-    Welcome
+    Hours Spent on lab: 10
   </div>
 </div>
 
@@ -153,7 +167,7 @@ ul.task-list li input[type="checkbox"] {
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 29, 2025</p>
+      <p class="date">October 2, 2025</p>
     </div>
   </div>
   
@@ -165,8 +179,76 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="introduction" class="level2">
+<h2 class="anchored" data-anchor-id="introduction">Introduction</h2>
+<p>In this lab, we utilized an ARM microcontroller to determine a motor’s rotational speed and direction through a quadrature encoder, with encoder pulses captured via interrupts to maintain precise and accurate measurements.</p>
+</section>
+<section id="design-methodology" class="level2">
+<h2 class="anchored" data-anchor-id="design-methodology">Design Methodology</h2>
+<p>I based my design on several example libraries provided for this course, using the GPIO, RCC, and TIM libraries with minimal modification. Building on these, I implemented control for multiple EXTI interrupt controllers.</p>
+<p>For my design, I chose to use a single interrupt handler that responds to changes on either encoder channel. Each time the handler is triggered, it increments a pulse-count variable and updates the encoder’s current state, recording which channel changed and whether it was a rising or falling edge. The new state is compared to the previous state to determine the motor’s direction using quadrature logic, since the 90° phase difference between channels produces a unique transition pattern for clockwise versus counterclockwise rotation. A checkDirection function evaluates the transition to assign the correct direction. Using a timer, the number of pulses is measured every second. This count is divided by 1632 (the pulses per rotation × 2 channels × counting both rising and falling edges) to calculate the motor’s speed in revolutions per second. The pulse-count variable is then reset to start measuring the next interval.</p>
+<p>This design uses interrupts to count the encoder pulses, which is more accurate and avoids the tricky task of setting up multiple timers with different frequencies. Only one timer is needed, and it’s used just to check how many pulses occurred every second. The timer runs at a 1 ms rate, so a simple delay_millis function is enough to measure the one-second intervals.</p>
+</section>
+<section id="technical-documentation" class="level2">
+<h2 class="anchored" data-anchor-id="technical-documentation">Technical Documentation:</h2>
+<p>The source code for the project can be found in the associated <a href="https://github.com/Marina-Bellido/E155-labs-code/tree/main/lab4/fpga/src">GitHub repository.</a></p>
+<section id="schematic" class="level3">
+<h3 class="anchored" data-anchor-id="schematic">Schematic</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/schematic5.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 1: Schematic of the circuit design for lab5</figcaption>
+</figure>
+</div>
+<p>A 25GA-370 DC Motor was used as the motor/encoder for this lab.<a href="https://hmc-e155.github.io/assets/lab/25GA370.pdf">Datasheet HDSP-511x</a></p>
+</section>
+<section id="flowchart" class="level3">
+<h3 class="anchored" data-anchor-id="flowchart">Flowchart</h3>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/flowchart5.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 2: Flowchart for the interrupt logic for lab5</figcaption>
+</figure>
+</div>
+<p>The main loop is executing on the left and the interrupt handler that is triggered whenever an encoder channel pulses is on the right.</p>
+</section>
+</section>
+<section id="result-and-discussion" class="level2">
+<h2 class="anchored" data-anchor-id="result-and-discussion">Result and Discussion</h2>
+<p>To test my motor, I connected it to a power supply and adjusted the voltage while it was attached to my circuit. I initially ran the motor at very low speeds in both directions to visually verify that the reported rotation direction matched the actual movement, which it did. I also connected the encoder channels to an oscilloscope and saw how the interaction with the interrupt handler was occurring. <img src="images/interruptoscilloscope.jpeg" class="img-fluid" alt="Figure 3: Flowchart for the interrupt logic for lab5"></p>
+<p>I also compared the performance of interrupt based code to manual polling at high speeds:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/pollinghs.jpeg" class="img-fluid figure-img"></p>
+<figcaption>Figure 5: Oscilloscope Trace showing the frequency. (commented out the delay)</figcaption>
+</figure>
+</div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/calculations.png" class="img-fluid figure-img"></p>
+<figcaption>Figure 6: Calculations to find Max Revolutions at which you can still accurately display your data without experiencing alliasing.</figcaption>
+</figure>
+</div>
+<section id="interrupt-vs-polling" class="level3">
+<h3 class="anchored" data-anchor-id="interrupt-vs-polling">Interrupt Vs polling</h3>
+<p>It’s comparing two ways your microcontroller (MCU) can detect signals coming from your encoder (or any input pin):</p>
+<ul>
+<li>Polling – constantly checking the pin to see if it changed.</li>
+<li>Interrupts – letting the MCU automatically react when the pin changes.</li>
+</ul>
+<p>In the polling method, the MCU repeatedly checks the state of the input pin in a continuous loop to see if it has changed. This approach is simple to implement, but it can become inefficient because the MCU spends much of its time checking the pin instead of performing other tasks. More importantly, if the encoder signal changes faster than the MCU can check it, pulses may be missed, resulting in inaccurate measurements. In contrast, interrupts allow the MCU to automatically react whenever the pin changes state. When an interrupt is triggered, the MCU immediately pauses its current operations and jumps to a special function designed to handle that event. This ensures that no pulses are missed, even at high speeds, while also freeing the MCU to perform other operations when no encoder changes are occurring. Overall, interrupts provide a faster, more reliable, and more efficient way to handle encoder signals compared to polling.</p>
+</section>
+</section>
+<section id="conclusion" class="level2">
+<h2 class="anchored" data-anchor-id="conclusion">Conclusion</h2>
+<p>The design successfully reports the speed of a motor and its direction, updating every second.</p>
+</section>
+<section id="ai-sections" class="level2">
+<h2 class="anchored" data-anchor-id="ai-sections">AI Sections</h2>
+<p>My AI section can be found in the following link: <a href="https://docs.google.com/document/d/1Af7Omg_EQoWIgwVuT9reDqKRjXKuW_L3h550ZHszoJc/edit?usp=sharing">AI SECTION</a></p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

@@ -1,0 +1,11 @@
+---
+title: "Project"
+navbar:
+  left:
+    - text: "Overview"
+      href: Project/Project.qmd
+    - text: "Gallery"
+      href: Project/Gallery.qmd
+---
+
+

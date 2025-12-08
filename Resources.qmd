@@ -1,10 +1,11 @@
 ---
-title: "E155 Resources"
-listing:
-  contents: Resources
-  sort: "date desc"
-  type: default
+title: "E-155 Final Porject: Invisible Drum Set"
+image: Project/Projectpics/team.png
 ---
+
+This project aims to adapt the existing Invisible Drum Set—originally implemented with an Arduino Nano and BNO055 IMU sensor—onto the E155 hardware platform, consisting of an STM32 MCU and UPduino FPGA. It will enable playing virtual drums through air gestures detected by the IMU, with real-time audio synthesis and low latency. 
+
+
 
 Link to the Course Website: 
 [Course Website](https://hmc-e155.github.io)

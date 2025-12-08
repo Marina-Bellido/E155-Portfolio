@@ -9,10 +9,13 @@ website:
         text: Home
       - href: Labs.qmd
         text: Labs
+      - href: Project
+        text: Project
       - href: Resources.qmd
         text: Resources
       - href: blog.qmd
         text: Blogs
+
 
 
 format:

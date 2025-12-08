@@ -83,13 +83,16 @@ The 7-segment display is a common-anode type, meaning one pin is tied to 3.3 V w
 
 ### Resistor Calculation
 
-To determine the appropriate resistor value, I used the forward voltage and current ratings from the 7-segment display datasheet
+To determine the appropriate resistor value, I used the forward voltage and current ratings from the 7-segment display datasheet. In the datasheet, the voltage drop is typically 2.1 V, so with a 3.3 V supply voltage the resistor will have 1.2 V going through it. I wanted to keep the current within the labs constraints 5-20mA to ensure low power draw so the LEDs were bright enough to see. I choose a 150ohms resistor which ended up giving me a current of 8mA (within range).
 
-FINISH TODO!!!
+[Datasheet: HDSP-511x](https://4donline.ihs.com/images/VipMasterIC/IC/AVGO/AVGO-S-A0010304938/AVGO-S-A0010304976-1.pdf?hkey=CECEF36DEECDED6468708AAF2E19C0C6)
+
 
 ### Counter Frequency Value 
 
-TODO!!!!
+I used the starter code given on the website which had a clk that had a frequency of 2.4MHz and the opjective was to blink LED[2] at a frequency of 2.4Hz. To achieve that I divided the given frequency by the desired and then divided again by 2 since the clk has two edges. That resulted in 5M cycles every toggle. 
+
+![Correct frequency output for led[2] = 2.4 Hz](images/frequency.jpeg)
 
 ## Schematic
 
@@ -103,3 +106,8 @@ The circuit schematic consists of the FPGA, DIP switches, LEDs, and a 7-segment 
 The E155 development board is fully assembled and operational. The FPGA, programmed with synthesized Verilog, drives the LEDs and 7-segment display as specified, with functionality verified in both simulation and hardware testing. The 7-segment display presents all digits clearly with uniform brightness, and overall the design meets every requirement for the lab.
 
 ![Uniform Brightness for the 7-segment Display](images/brightnesss.jpeg)
+
+
+## AI Sections 
+
+My AI section can be found in the following link:  [AI SECTION](https://docs.google.com/document/d/1s_RQ60bOdmPuav-fsFYPwvEC0DmVWXiaZDkT89pZTqk/edit?usp=sharing)

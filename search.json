@@ -406,10 +406,24 @@
     "text": "Lab 7: The Advanced Encryption Standard\nLab Report 7"
   },
   {
+    "objectID": "Project/Projectpics/Overview.html",
+    "href": "Project/Projectpics/Overview.html",
+    "title": "E-155 Final Porject: Invisible Drum Set",
+    "section": "",
+    "text": "This project aims to adapt the existing Invisible Drum Set—originally implemented with an Arduino Nano and BNO055 IMU sensor—onto the E155 hardware platform, consisting of an STM32 MCU and UPduino FPGA. It will enable playing virtual drums through air gestures detected by the IMU, with real-time audio synthesis and low latency."
+  },
+  {
+    "objectID": "Project/Projectpics/Overview.html#team",
+    "href": "Project/Projectpics/Overview.html#team",
+    "title": "E-155 Final Porject: Invisible Drum Set",
+    "section": "Team:",
+    "text": "Team:\nADD EMMETT HERE"
+  },
+  {
     "objectID": "Resources.html",
     "href": "Resources.html",
-    "title": "E155 Resources",
+    "title": "E-155 Final Porject: Invisible Drum Set",
     "section": "",
-    "text": "Link to the Course Website: Course Website"
+    "text": "This project aims to adapt the existing Invisible Drum Set—originally implemented with an Arduino Nano and BNO055 IMU sensor—onto the E155 hardware platform, consisting of an STM32 MCU and UPduino FPGA. It will enable playing virtual drums through air gestures detected by the IMU, with real-time audio synthesis and low latency.\nLink to the Course Website: Course Website"
   }
 ]

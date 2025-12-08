@@ -7,6 +7,13 @@
     "text": "Blog 1\n\n\nWelcome to my weekly Blogs\n\n\n\n\n\nAug 29, 2025\n\n\nMarina Bellido\n\n\n\n\n\nNo matching items"
   },
   {
+    "objectID": "Project.html",
+    "href": "Project.html",
+    "title": "E-155 Final Porject: Invisible Drum Set",
+    "section": "",
+    "text": "This project aims to adapt the existing Invisible Drum Set—originally implemented with an Arduino Nano and BNO055 IMU sensor—onto the E155 hardware platform, consisting of an STM32 MCU and UPduino FPGA. It will enable playing virtual drums through air gestures detected by the IMU, with real-time audio synthesis and low latency."
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "E155 Portfolio",
@@ -422,7 +429,7 @@
   {
     "objectID": "Resources.html",
     "href": "Resources.html",
-    "title": "E-155 Final Porject: Invisible Drum Set",
+    "title": "Resources",
     "section": "",
     "text": "This project aims to adapt the existing Invisible Drum Set—originally implemented with an Arduino Nano and BNO055 IMU sensor—onto the E155 hardware platform, consisting of an STM32 MCU and UPduino FPGA. It will enable playing virtual drums through air gestures detected by the IMU, with real-time audio synthesis and low latency.\nLink to the Course Website: Course Website"
   }
